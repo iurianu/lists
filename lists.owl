@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+     <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+   ]>
+<rdf:RDF xmlns="http://purls.site/vocab/kart.owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xml="http://www.w3.org/XML/1998/namespace"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:gr="http://purl.org/goodrelations/v1#"
+         xmlns:pto="http://www.productontology.org/id/#"
+         xmlns:wdrs="http://www.w3.org/2007/05/powder-s#"
+         xmlns:schema="https://schema.org/"
+         xmlns:bib="https://bib.schema.org/"
+         xmlns:knk="http://purls.site/vocab/kart.owl#"
+         xml:base="http://purls.site/vocab/kart.owl#">
+
+  <!-- Classes will be added for Scientific Articles: https://en.wikipedia.org/wiki/Scientific_literature#Scientific_article -->
+  
+  <owl:Ontology rdf:about="http://www.w3.org/2002/07/owl#Ontology">
+    <owl:imports rdf:resource="http://purl.org/goodrelations/v1"/>
+    <dc:description xml:lang="en">A custom ontology created for lists of any kind</dc:description>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</owl:versionInfo>
+    <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Iulian Andriescu</dc:creator>
+    <dc:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ontology, lists, descriptive lists, enumeration lists</dc:subject>
+    <dc:publisher>kazenokodomo</dc:publisher>
+    <dc:rights>Creative Commons - By Attribution</dc:rights>
+    <dc:title>Lists Ontology</dc:title>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </owl:Ontology>
+
+  <!-- Main Ontology Classes -->
+
+  <owl:Class rdf:about="http://purls.site/lists/List">
+    <rdfs:label xml:lang="en">List</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">List</rdf:ID>
+    <dc:description xml:lang="en">Any enumeration of a set of items.</dc:description>
+    <foaf:page rdf:resource="https://en.wikipedia.org/wiki/List"/>    
+    <owl:allValuesFrom rdf:parseType="Collection">
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#Enumeration"/>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#DescriptiveList"/>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#ItemList"/>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#OfferItemList"/>  
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#TOC"/>           
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#WorkFlow"/> 
+    </owl:allValuesFrom>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://purls.site/lists/DescriptiveList">
+    <rdfs:label xml:lang="en">Descriptive List</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Descriptive List</rdf:ID>
+    <dc:description xml:lang="en">A list composed of items, which are each describing some element.</dc:description>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#List"/>
+    </rdfs:subClassOf>
+  </owl:Class>  
+
+  <owl:Class rdf:about="http://purls.site/lists/Enumeration">
+    <rdfs:label xml:lang="en">Enumeration</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Enumeration</rdf:ID>
+    <dc:description xml:lang="en">Any enumeration in form of a list.</dc:description>
+    <foaf:page rdf:resource="https://en.wikipedia.org/wiki/Enumeration"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#List"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://purls.site/lists/ItemList">
+    <rdfs:label xml:lang="en">Item List</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ItemList</rdf:ID>
+    <dc:description xml:lang="en">A list made of different subsequently defined items.</dc:description>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#List"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://purls.site/lists/OfferItemList">
+    <rdfs:label xml:lang="en">Offer Item List</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OfferItemList</rdf:ID>
+    <dc:description xml:lang="en">A list made of more items presented within an offer.</dc:description>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#List"/>
+    </rdfs:subClassOf>
+  </owl:Class>  
+
+  <owl:Class rdf:about="http://purls.site/lists/TOC">
+    <rdfs:label xml:lang="en">TOC</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TOC</rdf:ID>
+    <dc:description xml:lang="en">A table of contents for a written work.</dc:description>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#List"/>
+    </rdfs:subClassOf>
+  </owl:Class>  
+
+  <owl:Class rdf:about="http://purls.site/lists/WorkFlow">
+    <rdfs:label xml:lang="en">Work Flow</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorkFlow</rdf:ID>
+    <dc:description xml:lang="en">A list used for enumerating workflow steps.</dc:description>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purls.site/vocab/lists.owl#List"/>
+    </rdfs:subClassOf>
+  </owl:Class>  
+
+  <!-- Contextual Classes -->
+
+  <owl:Class rdf:about="http://purls.site/lists/ListElement">
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ListElement</rdf:ID>
+    <dc:description xml:lang="en">An element of the list.</dc:description>
+    <rdfs:label xml:lang="en">List Element</rdfs:label>
+  </owl:Class>  
+
+  <owl:Class rdf:about="http://purls.site/lists/ListItem">
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ListItem</rdf:ID>
+    <dc:description xml:lang="en">An item in a list.</dc:description>
+    <rdfs:label xml:lang="en">List Item</rdfs:label>
+  </owl:Class> 
+
+  <owl:Class rdf:about="http://purls.site/lists/ChapterName">
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChapterName</rdf:ID>
+    <dc:description xml:lang="en">The name of a chapter enumerated in a TOC.</dc:description>
+    <rdfs:label xml:lang="en">Chapter Name</rdfs:label>
+  </owl:Class>  
+
+
+  <!-- Assertion Properties -->
+
+  <owl:AssertionProperty rdf:about="http://purls.site/property/name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">name</rdf:ID>
+    <dc:description xml:lang="en">The name of the list.</dc:description>
+  </owl:AssertionProperty>
+
+  <owl:AssertionProperty rdf:about="http://purls.site/property/subject">
+    <rdfs:label xml:lang="en">subject</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">subject</rdf:ID>
+    <dc:description xml:lang="en">The subject of the enumerated content, if applicable.</dc:description>
+  </owl:AssertionProperty>
+
+ <!-- Object Properties -->
+
+  <owl:ObjectProperty rdf:about="http://purls.site/property/category">
+    <rdfs:label xml:lang="en">category</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">category</rdf:ID>
+    <dc:description xml:lang="en">The category which the list is in.</dc:description>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purls.site/property/language">
+    <rdfs:label xml:lang="en">language</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">language</rdf:ID>
+    <dc:description xml:lang="en">The language of the text enumerated.</dc:description>
+  </owl:ObjectProperty>
+
+  <!-- Functional Properties -->
+
+  <owl:FunctionalProperty rdf:about="http://purls.site/property/additionalProperty">
+    <rdfs:label xml:lang="en">additionalProperty</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">additionalProperty</rdf:ID>
+    <dc:description xml:lang="en">Any additional property to be added using http://schema.org/PropertyValue.</dc:description>   
+  </owl:FunctionalProperty> 
+
+  <owl:FunctionalProperty rdf:about="http://purls.site/property/includes">
+    <rdfs:label xml:lang="en">includes</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">includes</rdf:ID>
+    <dc:description xml:lang="en">Any kind of offer, or service described with the current list.</dc:description>   
+  </owl:FunctionalProperty>  
+
+  <owl:FunctionalProperty rdf:about="http://purls.site/property/offers">
+    <rdfs:label xml:lang="en">offers</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">offers</rdf:ID>
+    <dc:description xml:lang="en">Any offer added within the list items.</dc:description>   
+  </owl:FunctionalProperty>   
+
+  <!-- Annotation Properties -->
+
+  <owl:AnnotationProperty rdf:about="http://purls.site/property/description">
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">description</rdf:ID>
+    <dc:description xml:lang="en">A textual description of a List, List Item, or List Element.</dc:description>   
+  </owl:AnnotationProperty> 
+
+  <owl:AnnotationProperty rdf:about="http://purls.site/property/listDescription">
+    <rdfs:label xml:lang="en">List Description</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listDescription</rdf:ID>
+    <dc:description xml:lang="en">A description provided for this list.</dc:description>   
+  </owl:AnnotationProperty> 
+
+  <owl:AnnotationProperty rdf:about="http://purls.site/property/list">
+    <rdfs:label xml:lang="en">list</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">list</rdf:ID>
+    <dc:description xml:lang="en">Any kind of list appearing within another list item.</dc:description>   
+  </owl:AnnotationProperty>  
+
+  <owl:AnnotationProperty rdf:about="http://purls.site/property/text">
+    <rdfs:label xml:lang="en">text</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">text</rdf:ID>
+    <dc:description xml:lang="en">A textual content that appears inside a List Item, or List Element.</dc:description>   
+  </owl:AnnotationProperty>  
+
+  <!-- Datatype Properties -->
+
+  <owl:DatatypeProperty rdf:about="http://purls.site/property/listItem">
+    <rdfs:label xml:lang="en">List Item</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listItem</rdf:ID>
+    <dc:description xml:lang="en">An item in the list.</dc:description> 
+  </owl:DatatypeProperty> 
+
+  <owl:DatatypeProperty rdf:about="http://purls.site/property/listOrder">
+    <rdfs:label xml:lang="en">List Order</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listOrder</rdf:ID>
+    <dc:description xml:lang="en">The order of the list items, defined by https://schema.org/ItemListOrderType.</dc:description> 
+  </owl:DatatypeProperty>   
+
+  <owl:DatatypeProperty rdf:about="http://purls.site/property/numberOfItems">
+    <rdfs:label xml:lang="en">Number of Items</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">numberOfItems</rdf:ID>
+    <dc:description xml:lang="en">The number of items in the list.</dc:description> 
+  </owl:DatatypeProperty>    
+
+  <owl:DatatypeProperty rdf:about="http://purls.site/property/tag">
+    <rdfs:label xml:lang="en">tag</rdfs:label>
+    <rdf:ID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tag</rdf:ID>
+    <dc:description xml:lang="en">Property linking to a free-text tag which may include spaces.</dc:description> 
+  </owl:DatatypeProperty>   
+
+</rdf:RDF>
