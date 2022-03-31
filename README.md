@@ -1,11 +1,8 @@
 
 ### Lists Ontology
-###
+(This file is a work in progress)
 
 ### Technologies used:
-###
-### RDFa
-### RDFs
-### OWL (Web Ontology Language)
-
-### See the latest version online [here](http://iurianu.rocks/wp-content/uploads/cdn/lists.owl)
+- RDFa
+- RDFs
+- OWL (Web Ontology Language)
